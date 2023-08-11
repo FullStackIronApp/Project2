@@ -1,8 +1,13 @@
-<!-- # Set Main functionality of the project
+# Set Main functionality of the project
+We want to create a movie review page where the useres can post and review movies and rate other movies. 
+The aim of this project is to make a full stack web application with CRUD functionality. In adittion users can also
+consume IMDB API data while using the site. 
 
 # Try to create or draw functionality
 
-# CREATE a TABLE WITH ALL ROUTES NECESSARY -->
+The wireframe can be found here: https://excalidraw.com/#json=pdQtAsY2wFsPG2NtRx8g1,vVD8zYR5n-_2vu2Sz7Mo-Q
+
+# CREATE a TABLE WITH ALL ROUTES NECESSARY
 
 ## Table example
 
