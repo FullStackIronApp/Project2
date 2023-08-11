@@ -1,5 +1,15 @@
-# Project2
+# Set Main functionality of the project
 
-This is the right one
+# Try to create or draw functionality
+
+# CREATE a TABLE WITH ALL ROUTES NECESSARY
+
+## Table example
+
+| Route | HTTP Verb | Description |
+| --- | --- | --- |
+| /api | GET | Description |
+
+
 
 
