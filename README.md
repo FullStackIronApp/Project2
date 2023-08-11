@@ -30,8 +30,8 @@ The wireframe can be found here: https://excalidraw.com/#json=pdQtAsY2wFsPG2NtRx
 | "/reviews/user/:userId" | GET | It will render the page containing the reviews made by each user in their profile using their respective IDs.
 | "/reviews/review/:reviewId" | GET | This route renders the page that contains all the information about the review and also, the buttons for editing, deleting, and giving a score.
 | "/reviews/review/:reviewId" | POST | It will post all the details of the form such as a score button, delete or edit.
-| "/reviews/:reviewId/edit" | GET | This route renders the page where you’re able to edit your own reviews.
-| "/reviews/:reviewId/edit" | POST | Allow us to post information to our database regarding the edited reviews.
+| "/reviews/review/:reviewId/edit" | GET | This route renders the page where you’re able to edit your own reviews.
+| "/reviews/review/:reviewId/edit" | POST | Allow us to post information to our database regarding the edited reviews.
 
 
 
