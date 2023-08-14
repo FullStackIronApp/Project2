@@ -9,7 +9,8 @@ const reviewSchema = new Schema(
     },
     score: {
         type: Number,
-        required: true
+        required: true,
+        // enum
     },
     createdBy:  [{ type: Schema.Types.ObjectId, ref: "User" }]
   },
