@@ -24,14 +24,14 @@ The wireframe can be found here: https://excalidraw.com/#json=pdQtAsY2wFsPG2NtRx
 | "/profile" | POST | It will send the details of the profile to our database.
 | "/profile/delete" | GET | It will render the profile deletion page, where you will be asked if you are sure about the action you wish to perform. 
 | "/profile/delete" | POST | This route will post in our database the information related to whether the user should be deleted.
-| "/reviews" | GET | It will display a rendering of the page where you will find reviews submitted by all users, showing the movie image, title, and other information. Additionally, you will find the button to access a create a personal review and check your reviews.
-| "/reviews/create" | GET | This route will render a page where you will need to fill out mandatory fields related to information about the movie for which you want to submit a public review. 
-| "/reviews/create" | POST | The post route allows us to submit the review information to our database.
-| "/reviews/user/:userId" | GET | It will render the page containing the reviews made by each user in their profile using their respective IDs.
-| "/reviews/review/:reviewId" | GET | This route renders the page that contains all the information about the review and also, the buttons for editing, deleting, and giving a score.
-| "/reviews/review/:reviewId" | POST | It will post all the details of the form such as a score button, delete or edit.
-| "/reviews/review/:reviewId/edit" | GET | This route renders the page where you’re able to edit your own reviews.
-| "/reviews/review/:reviewId/edit" | POST | Allow us to post information to our database regarding the edited reviews.
+| "/movies" | GET | It will display a rendering of the page where you will find movies submitted by all users, showing the movie image, title, and other information. Additionally, you will find the button to access a create a personal review and check your movies.
+| "/movies/create" | GET | This route will render a page where you will need to fill out mandatory fields related to information about the movie for which you want to submit a public review. 
+| "/movies/create" | POST | The post route allows us to submit the review information to our database.
+| "/movies/user/:userId" | GET | It will render the page containing the movies made by each user in their profile using their respective IDs.
+| "/movies/movie/:movieId" | GET | This route renders the page that contains all the information about the movie and also, the buttons for editing, deleting, and giving a score.
+| "/movies/movie/:movieId" | POST | It will post all the details of the form such as a score button, delete or edit.
+| "/movies/movie/:movieId/edit" | GET | This route renders the page where you’re able to edit your own movies.
+| "/movies/movie/:movieId/edit" | POST | Allow us to post information to our database regarding the edited movies.
 
 
 
