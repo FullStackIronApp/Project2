@@ -22,7 +22,7 @@ const movieSchema = new Schema(
     },
     uploadedBy : [{ type: Schema.Types.ObjectId, ref: "User" }], //check later if this is gonna be enough
     score: {
-        type: [Numbers]
+        type: [Number]
     },
     movieImg: {
         type: String,
