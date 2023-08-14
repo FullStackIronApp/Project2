@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Movie = require("../models/Movie.model");
 const Review = require("../models/Review.model");
+const fileUploader = require('../config/cloudinary.config');
 
 router.get("/movies", (req, res) => {
   Movie.find()
