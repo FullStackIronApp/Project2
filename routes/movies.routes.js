@@ -5,6 +5,7 @@ const Review = require("../models/Review.model");
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
 
 
+
 router.get("/movies", isLoggedIn, (req, res) => {
   Movie.find()
     .then((movies) => {
