@@ -1,9 +1,9 @@
 const User = require('../models/User.model');
-const express = require('express')
+const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 router.get("/signup", (req, res, next)=>{
     res.render("signup");

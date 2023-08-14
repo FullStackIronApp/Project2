@@ -1,0 +1,27 @@
+<div id="form">
+  <h2>Signup</h2>
+  <form action="/profile" method="POST">
+
+    <label> Username
+      <input type="text" name="username" placeholder="username" value="{{userInSession.username}}"/>
+    </label>
+
+    <label> Email
+      <input name="email" placeholder="rockstar@ironhack.com" value=""/>
+    </label>
+
+    <label> Password
+      <input type="password" name="password" placeholder="********" value=""/>
+    </label>
+
+   <label> Profile Picture
+    <input type="file" value=""/>
+   </label>
+
+    <button type="submit">Edit Profile</button>
+
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
