@@ -1,34 +1,15 @@
-<div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh">
+<div class="d-flex flex-column justify-content-center align-items-center">
     <h1>Welcome to PopcornMDB</h1>
     <p>Welcome Ironhacker!</p>
 
 
-    <div class="container">
-        <div>
-            <img src="" alt="">
-            <h3></h3>
-            <p>Score: </p>
-        </div>
+    <div class="d-flex flex-row flex-wrap justify-content-around">
+        {{#each movies}}
+          <div class="m-2" style="width: 200px;">
+              <img src="https://image.tmdb.org/t/p/w200/{{this.poster_path}}" alt="">
+              <h5>{{this.title}}</h3>
+              <p>Score: {{this.vote_average}} </p>
+          </div>
+        {{/each}}
     </div>
-
- {{!-- <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-       {{!-- CARD --}}
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-        {{!-- CARD --}}
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div> --}}
+</div>
