@@ -4,37 +4,63 @@ const { Schema, model } = require("mongoose");
 const movieSchema = new Schema(
   {
     title: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
     year: {
-        type: Number,
-        min: 1900,
-        max: new Date().getFullYear()
+      type: Number,
+      min: 1900,
+      max: new Date().getFullYear(),
     },
     genre: {
-        type: [String],
-        enum: ['drama', 'comedy', 'action', 'animation', "adventure", "fantasy", "horror", "musicals", "mystery", "romance", "science fiction", "sports", "thriller"]
+      type: [String],
+      enum: [
+        "drama",
+        "comedy",
+        "action",
+        "animation",
+        "adventure",
+        "fantasy",
+        "horror",
+        "musicals",
+        "mystery",
+        "romance",
+        "science fiction",
+        "sports",
+        "thriller",
+      ],
     },
     director: {
-        type: String
+      type: String,
     },
-    uploadedBy : { type: Schema.Types.ObjectId, ref: "User" }, //check later if this is gonna be enough
+    uploadedBy: { type: Schema.Types.ObjectId, ref: "User" }, //check later if this is gonna be enough
     score: {
-        type: [Number]
+      type: [Number],
     },
     movieImg: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    reviews:  [{ type: Schema.Types.ObjectId, ref: "Review" }]
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
-    timestamps: true
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+    timestamps: true,
   }
 );
+
+movieSchema.virtual("averageScore").get(function () {
+  if (this.reviews.length === 0) {
+    return 0; // Return 0 if there are no reviews
+  }
+
+  const totalScore = this.reviews.reduce((sum, review) => {
+    return sum + review.score;
+  }, 0);
+
+  return totalScore / this.reviews.length;
+});
 
 const Movie = model("Movie", movieSchema);
 

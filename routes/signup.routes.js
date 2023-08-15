@@ -4,13 +4,17 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
 const mongoose = require('mongoose');
+const fileUploader = require("../config/cloudinary.config.js");
+
 
 router.get("/signup", (req, res, next)=>{
     res.render("signup");
 });
 
-router.post("/signup", (req, res, next)=>{
-    const {email, username, password, profileUrl} = req.body;
+router.post("/signup", fileUploader.single("profileImg"), (req, res, next)=>{
+    const {email, username, password} = req.body;
+
+    console.log(req.file);
 
     if (!email || !username || !password){
         res.render("signup", {errorMessage: 'All fields are mandatory. Please provide your username, email and password.'});
@@ -24,7 +28,8 @@ router.post("/signup", (req, res, next)=>{
         return User.create({
             email,
             username,
-            password: hashedPassword
+            password: hashedPassword,
+            profileUrl: req.file.path
         })
     })
     .then(error=> {
