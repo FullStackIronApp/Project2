@@ -1,0 +1,23 @@
+<img src="{{movie.movieImg}}" alt="{{movie.title}}" style="width: 400px;">
+<h1>{{movie.title}}</h1>
+<p>Year: {{movie.year}}</p>
+<p>Genre: {{movie.genre}}</p>
+<p>Score: {{movie.score}}</p>
+<p>Uploaded by: {{movie.uploadedBy.username}}</p>
+
+<h1>Reviews</h1>
+{{#each movie.reviews}}
+<p>Review from: {{this.createdBy}}</p>
+<p>{{this.content}}</p>
+<p>Score: {{this.score}}</p>
+{{/each}}
+
+<form action="/movie/{{movie._id}}/" method="POST">
+    <label for="content"> Review
+        <input type="text" name="content">
+    </label>
+    <label for="score"> Score
+        <input type="number" name="score">
+    </label>
+    <button type="submit"> Send review</button>
+</form>

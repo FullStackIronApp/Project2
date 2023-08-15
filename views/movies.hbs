@@ -2,6 +2,6 @@
 
 <a href="/movies/{{userInSession._id}}"> <button>Your movies</button></a>
 {{#each movies}}
-<img src="{{this.movieImg}}" alt="" style="width: 200px;">
-<h1>{{this.title}}</h1>
+<a href="/movie/{{this._id}}"><img src="{{this.movieImg}}" alt="" style="width: 200px;"></a>
+<a href="/movie/{{this._id}}"><h1>{{this.title}}</h1></a>
 {{/each}}
