@@ -24,8 +24,6 @@ router.post(
   (req, res, next) => {
     const { title, year, genre, director, content, score } = req.body;
 
-    console.log(req.file.path);
-
     Review.create({
       content,
       score,
