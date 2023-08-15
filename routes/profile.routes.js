@@ -42,4 +42,16 @@ router.post("/profile/:id/edit", async (req,res)=>{
 });
 
 
+router.post("/profile/:id/delete", (req, res) => {
+    const { id } = req.params;
+  
+    User.findByIdAndRemove(id)
+      .then((data) => {
+        console.log(data);
+        res.redirect("/signup");
+      })
+      .catch((err) => console.log(err));
+  });
+
+
 module.exports = router;
