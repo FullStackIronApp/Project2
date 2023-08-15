@@ -19,7 +19,7 @@ router.get("/profile/:id/edit", async (req,res)=>{
 
       const profile = await User.findById(id);
 
-      res.render('profile/edit-profile', { profile: profile}); 
+      res.render('profile/edit-profile', { profile: profile, userInSession: req.session.currentUser}); 
   } catch (error) {
       console.error(error);
   }

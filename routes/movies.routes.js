@@ -14,7 +14,7 @@ router.get("/movies", isLoggedIn, (req, res) => {
 });
 
 router.get("/movies/create", isLoggedIn, (req, res) => {
-  res.render("movies-create");
+  res.render("movies-create", {userInSession: req.session.currentUser});
 });
 
 router.post(
@@ -55,7 +55,7 @@ router.get("/movies/:userId", (req, res, next) => {
 
   Movie.find({ uploadedBy: userId })
     .then((movies) => {
-      res.render("user-movies", { movies });
+      res.render("user-movies", { movies, userInSession: req.session.currentUser });
     })
     .catch((err) => next(err));
 });
@@ -68,7 +68,7 @@ router.get("/movie/:movieId", (req, res, next) => {
     .populate("reviews")
     .then((movie) => {
       console.log(movie);
-      res.render("movie-details.hbs", { movie });
+      res.render("movie-details.hbs", { movie, userInSession: req.session.currentUser });
     })
     .catch((err) => next(err));
 });

@@ -8,7 +8,7 @@ const fileUploader = require("../config/cloudinary.config.js");
 
 
 router.get("/signup", (req, res, next)=>{
-    res.render("signup");
+    res.render("signup", {userInSession: req.session.currentUser});
 });
 
 router.post("/signup", fileUploader.single("profileImg"), (req, res, next)=>{
