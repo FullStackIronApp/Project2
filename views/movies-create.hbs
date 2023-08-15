@@ -1,34 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{{ title }}</title>
-</head>
-<body>
-  <h1>{{ title }}</h1>
-  <form action="/movies/create" method="POST" enctype="multipart/form-data">
-    <label for="title">Movie Title:</label>
-    <input type="text" id="title" name="title" required>
-    <br>
-    <label for="year">Year:</label>
-    <input type="number" id="year" name="year" required>
-    <br>
-    <label for="genre">Genre:</label>
-    <input type="text" id="genre" name="genre" required>
-    <br>
-    <label for="movieImg">Movie Image URL:</label>
-    <input type="file" id="imgUrl" name="movieImg" required>
-    <br>
-    <label for="content">Review Link:</label>
-    <input type="text" id="reviewLink" name="content" required>
-    <br>
-    <label for="score">Score:</label>
-    <input type="number" id="score" name="score" required>
-    <br>
-    <button type="submit">Create</button>
-  </form>
-</body>
-</html>
 
+<div class="container mt-5">
+  <h1 class="text-center">Post a Movie</h1>
+  <form action="/movies/create" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="reviewTitle">Title of the movie</label>
+      <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title for your review">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="reviewTitle">Movie Image URL</label>
+      <input type="file" id="imgUrl" class="form-control" name="movieImg">
+    </div>
+    <br>
+     <div class="form-group">
+      <label for="reviewTitle">Genre</label>
+      <input type="text" class="form-control" id="genre" name="genre" placeholder="Enter a year for your review">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="reviewTitle">Year</label>
+      <input type="number" class="form-control" id="year" name="year" placeholder="Enter a year for your review">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="reviewContent">Your Review:</label>
+      <textarea class="form-control" id="reviewLink" name="content" rows="8" placeholder="Write your review here"></textarea>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="score">Score:</label>
+        <input type="number" id="score" name="score" required>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
 
 
 
