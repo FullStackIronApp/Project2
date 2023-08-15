@@ -4,7 +4,9 @@ const User = require("../models/User.model");
 const bcryptjs = require("bcryptjs");
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
 
-
+router.get("/login", (req, res) => {
+  res.render('login')
+})
 
 router.post("/login", (req, res, next) => {
   const { email, username, password } = req.body;
