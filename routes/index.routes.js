@@ -18,7 +18,7 @@ router.get("/", (req, res, next) => {
   fetch(url, options)
     .then((res) => res.json())
     .then((json) => {
-      res.render("index", { movies: json.results });
+      res.render("index", { movies: json.results, userInSession: req.session.currentUser });
     })
     .catch((err) => console.error("error:" + err));
 });
