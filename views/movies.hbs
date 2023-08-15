@@ -3,38 +3,17 @@
   <h1 class="my-4">ALL MOVIES</h1>
   <a href="/movies/create" class="btn btn-primary">Create movie</a>
   <a href="/movies/{{userInSession._id}}" class="btn btn-secondary">Your movies</a>
-
-  <div id="movieCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      {{#each movies}}
-      <div class="carousel-item {{#if @first}}active{{/if}}">
-        <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
-          <img src="{{this.movieImg}}" alt="{{this.title}}" class="img-fluid rounded">
-        </div>
-        <div class="carousel-caption">  
-          <h3>{{this.title}}</h3>
-          <p>Score: {{this.vote_average}}</p>
-        </div>
-      </div>
-      {{/each}}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
   
-  <div class="d-flex flex-row flex-wrap justify-content-around mt-4">
+  <div class="d-flex flex-row flex-wrap justify-content-center mt-4">
     {{#each movies}}
-    <div class="m-2" style="width: 200px; height:100px">
-      <a href="/movie/{{this._id}}"><img src="{{this.movieImg}}" alt="{{this.title}}" class="img-fluid rounded"></a>
-      <a href="/movie/{{this._id}}"><h3>{{this.title}}</h3></a>
-      <p>Score: {{this.vote_average}}</p>
-    </div>
+<div class="card m-2" style="width: 18rem; height: 25rem">
+  <img src="{{this.movieImg}}" class="card-img-top" alt="{{this.title}}" height="250px" width="180px">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text" style="width: auto;">Score: <strong>{{this.averageScore}}</strong></p>
+    <a href="/movie/{{this._id}}" class="btn btn-primary">Make review</a>
+  </div>
+</div>
     {{/each}}
   </div>
 </div>

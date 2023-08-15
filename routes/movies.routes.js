@@ -7,6 +7,7 @@ const fileUploader = require("../config/cloudinary.config.js");
 
 router.get("/movies", isLoggedIn, (req, res) => {
   Movie.find()
+    .populate("reviews")
     .then((movies) => {
       res.render("movies", { movies, userInSession: req.session.currentUser });
     })

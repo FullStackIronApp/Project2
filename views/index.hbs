@@ -2,14 +2,26 @@
     <h1>Welcome to PopcornMDB</h1>
     <p>Welcome Ironhacker!</p>
 
-<a href="/movies/" class="btn btn-primary">Movies</a>
-    <div class="d-flex flex-row flex-wrap justify-content-around">
+<div id="movieCarousel" class="carousel slide mt-4" data-bs-ride="carousel" >
+    <div class="carousel-inner" style="height: 60vh;">
         {{#each movies}}
-          <div class="m-2" style="width: 200px;">
-              <img src="https://image.tmdb.org/t/p/w200/{{this.poster_path}}" alt="">
-              <h5>{{this.title}}</h3>
-              <p>Score: {{this.vote_average}} </p>
-          </div>
+        <div class="carousel-item {{#if @first}}active{{/if}}">
+        <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+            <img src="https://image.tmdb.org/t/p/original/{{this.poster_path}}" alt="{{this.title}}" class="img-fluid rounded">
+        </div>
+            <div class="carousel-caption" style="background-color:rgb(0,0,0);opacity:0.8;">  
+                <h3>{{this.title}}</h3>
+                <p>Score: {{this.vote_average}}</p>
+            </div>
+        </div>
         {{/each}}
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
