@@ -26,7 +26,7 @@ router.post("/movies/create", fileUploader.single('movieImg'), isLoggedIn, (req,
   Review.create({
     content,
     score,
-    // createdBy:  req.session.currentUser.username, check later if is working after session
+    createdBy: req.session.currentUser._id
   })
     .then((reviewFromDB) => {
       console.log(reviewFromDB);

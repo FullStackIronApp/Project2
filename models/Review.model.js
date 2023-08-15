@@ -12,7 +12,7 @@ const reviewSchema = new Schema(
         required: true,
         // enum
     },
-    createdBy:  [{ type: Schema.Types.ObjectId, ref: "User" }]
+    createdBy:  { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
