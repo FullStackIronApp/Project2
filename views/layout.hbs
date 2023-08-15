@@ -16,22 +16,27 @@
 
    <body>
    <nav class="navbar navbar-expand-lg bg-warning-subtle">
-   <div class="container-fluid">
+   <div class="container-fluid align-items-center">
       <a class="navbar-brand" href="/"><img src="./images/logo.png" alt="" style="height: 80px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse d-flex flex-row justify-content-end" id="navbarNav">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
          <ul class="navbar-nav">
          {{#if userInSession}}
          <li class="nav-item">
             <a class="nav-link" href="/movies">Movies</a>
          </li>
          <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
-         </li>
-         <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+         <div class="dropdown">
+               <button class="btn dropdown-toggle" type="button" id="imageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <img src="{{userInSession.profileUrl}}" alt="Image" width="50" height="50" style="border-radius: 50%;"> <!-- Replace with your image source -->
+               </button>
+               <div class="dropdown-menu" aria-labelledby="imageDropdown">
+               <a class="dropdown-item" href="/profile">Profile</a>
+               <a class="dropdown-item" href="/logout">Logout</a>
+               </div>
+            </div>
          </li>
          {{else}}
          <li class="nav-item">
