@@ -32,7 +32,7 @@ router.post("/profile/:id/edit", async (req,res)=>{
     const { username, email, profileUrl } = req.body;
 
     const updatedProfile = await User.findByIdAndUpdate(id, { username: username, email:email, profileUrl: profileUrl }, { new: true });
-
+    req.session.currentUser = updatedProfile;
     console.log(updatedProfile);
     res.redirect(`/profile`);
 } catch (error) {
