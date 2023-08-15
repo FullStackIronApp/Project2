@@ -4,7 +4,6 @@ const Movie = require("../models/Movie.model");
 const Review = require("../models/Review.model");
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 const fileUploader = require("../config/cloudinary.config.js");
-const { ObjectId } = require("bson");
 
 router.get("/movies", isLoggedIn, (req, res) => {
   Movie.find()
