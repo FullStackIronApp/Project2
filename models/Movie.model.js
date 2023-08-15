@@ -20,7 +20,7 @@ const movieSchema = new Schema(
     director: {
         type: String
     },
-    uploadedBy : [{ type: Schema.Types.ObjectId, ref: "User" }], //check later if this is gonna be enough
+    uploadedBy : { type: Schema.Types.ObjectId, ref: "User" }, //check later if this is gonna be enough
     score: {
         type: [Number]
     },

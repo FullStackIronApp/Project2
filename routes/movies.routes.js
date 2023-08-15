@@ -36,6 +36,7 @@ router.post("/movies/create", isLoggedIn, (req, res, next) => {
         movieImg,
         reviews: [reviewFromDB],
         score,
+        uploadedBy: req.session.currentUser._id
       });
     })
     .then((result) => {
