@@ -19,10 +19,7 @@ router.get("/movies/create", isLoggedIn, (req, res) => {
 });
 
 router.post(
-  "/movies/create",
-  fileUploader.single("movieImg"),
-  isLoggedIn,
-  (req, res, next) => {
+  "/movies/create", fileUploader.single("movieImg"), isLoggedIn,(req, res, next) => {
     const { title, year, genre, director, content, score } = req.body;
 
     Review.create({
