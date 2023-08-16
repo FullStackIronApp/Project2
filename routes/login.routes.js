@@ -11,7 +11,7 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res, next) => {
   const { email, username, password } = req.body;
   if (email === "" || username === "" || password === "") {
-    return res.render("/login", {
+    return res.render("login", {
       errorMessage: "Please enter your email, username and password to login.",
     });
   }

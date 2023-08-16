@@ -48,7 +48,7 @@ router.post(
   }
 );
 
-router.get("/movies/:userId", (req, res, next) => {
+router.get("/movies/:userId", isLoggedIn, (req, res, next) => {
   const { userId } = req.params;
 
   Movie.find({ uploadedBy: userId })
@@ -59,7 +59,7 @@ router.get("/movies/:userId", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.get("/movie/:movieId", (req, res, next) => {
+router.get("/movie/:movieId", isLoggedIn, (req, res, next) => {
   const { movieId } = req.params;
 
   Movie.findById(movieId)

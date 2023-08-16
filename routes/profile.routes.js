@@ -4,9 +4,10 @@ const User = require("../models/User.model");
 const mongoose = require('mongoose');
 const { profile } = require("console");
 const fileUploader = require("../config/cloudinary.config.js");
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
 
-router.get("/profile", (req, res) => {
+router.get("/profile", isLoggedIn, (req, res) => {
   res.render("profile", { userInSession: req.session.currentUser });
 });
 
@@ -14,7 +15,7 @@ router.post("/profile", (req, res) => {
   const { email, username, password, profileUrl } = req.body;
 });
 
-router.get("/profile/:id/edit", async (req, res) => {
+router.get("/profile/:id/edit",isLoggedIn, async (req, res) => {
 
   try {
     const { id } = req.params;
