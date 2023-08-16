@@ -6,56 +6,54 @@ const { profile } = require("console");
 const fileUploader = require("../config/cloudinary.config.js");
 
 
-router.get("/profile", (req, res)=>{
-    res.render("profile", {userInSession: req.session.currentUser});
+router.get("/profile", (req, res) => {
+  res.render("profile", { userInSession: req.session.currentUser });
 });
 
-router.post("/profile", (req, res)=>{
-    const {email, username, password, profileUrl} = req.body;
+router.post("/profile", (req, res) => {
+  const { email, username, password, profileUrl } = req.body;
 });
 
-router.get("/profile/:id/edit", async (req,res)=>{
+router.get("/profile/:id/edit", async (req, res) => {
 
-    try {
-      const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-      const profile = await User.findById(id);
+    const profile = await User.findById(id);
 
-      res.render('profile', { profile: profile, userInSession: req.session.currentUser}); 
+    res.render('profile', { profile: profile, userInSession: req.session.currentUser });
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
 });
 
 
-router.post("/profile/:id/edit", fileUploader.single("profileUrl"),  (req,res,next)=>{
-    const { id } = req.params;
-    const { username, email} = req.body;
-    console.log(req.file.path)
-    .then(()=>{
-      return User.findByIdAndUpdate(id, { username: username, email:email, profileUrl: req.file.path }, { new: true })
-    })
-    .then((updatedUser)=>{
+router.post("/profile/:id/edit", fileUploader.single("profileUrl"), (req, res, next) => {
+  const { id } = req.params;
+  const profileUrl = req.session.currentUser.profileUrl;
+  const { username, email } = req.body;
+  User.findByIdAndUpdate(id, { username: username, email: email, profileUrl: req.file?.path || profileUrl }, { new: true })
+    .then((updatedUser) => {
       req.session.currentUser = updatedUser;
       console.log(updatedUser);
       res.redirect(`/profile`);
     })
-    .catch((err)=>{
+    .catch((err) => {
       next(err)
     })
 });
 
 
 router.post("/profile/:id/delete", (req, res) => {
-    const { id } = req.params;
-  
-    User.findByIdAndRemove(id)
-      .then((data) => {
-        console.log(data);
-        res.redirect("/signup");
-      })
-      .catch((err) => console.log(err));
-  });
+  const { id } = req.params;
+
+  User.findByIdAndRemove(id)
+    .then((data) => {
+      console.log(data);
+      res.redirect("/signup");
+    })
+    .catch((err) => console.log(err));
+});
 
 
 module.exports = router;
