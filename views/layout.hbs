@@ -18,7 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
 
     <style>
-      body{ background-color: #F0F0F0; } nav{ background-color: #3C486B; }
+      body{ background-color: #FFFEEC; } nav{ background-color: #085F63; } footer { background-color: #EDEDED;} .nav-items{
+        color: #FACF5A;
+      }
     </style>
   </head>
 
@@ -26,8 +28,9 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid align-items-center">
         <a class="navbar-brand mt-2" href="/"><h3
-            style="font-family: 'Bungee Inline', cursive; color:red;"
+            style="font-family: 'Bungee Inline', cursive; color: #FACF5A;"
           >PopcornMDB</h3></a>
+          <img src="/images/ylogo.png" alt="" height="50px" style="margin-left: -20px;">
         <button
           class="navbar-toggler"
           type="button"
@@ -45,8 +48,8 @@
         >
           <ul class="navbar-nav">
             {{#if userInSession}}
-              <li class="nav-item">
-                <a class="nav-link" href="/movies">Movies</a>
+              <li class="d-flex align-items-center nav-item">
+                <a class="nav-link nav-items" href="/movies" style="color: #FACF5A;">Movies</a>
               </li>
               <li class="nav-item">
                 <div class="dropdown">
@@ -67,18 +70,18 @@
                     />
                     <!-- Replace with your image source -->
                   </button>
-                  <div class="dropdown-menu" aria-labelledby="imageDropdown">
-                    <a class="dropdown-item" href="/profile">Profile</a>
-                    <a class="dropdown-item" href="/logout">Logout</a>
+                  <div class="dropdown-menu" aria-labelledby="imageDropdown" style="background-color:#085F63">
+                    <a class="dropdown-item" href="/profile" style="color: #FACF5A;">Profile</a>
+                    <a class="dropdown-item" href="/logout" style="color: #FACF5A;">Logout</a>
                   </div>
                 </div>
               </li>
             {{else}}
               <li class="nav-item">
-                <a class="nav-link" href="/signup">Signup</a>
+                <a class="nav-link" href="/signup" style="color: #FACF5A;">Signup</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/login" style="color: #FACF5A;">Login</a>
               </li>
             {{/if}}
           </ul>
