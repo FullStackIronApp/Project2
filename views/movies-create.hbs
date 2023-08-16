@@ -1,41 +1,72 @@
-
 <div class="container mt-5">
   <h1 class="text-center">Post a Movie</h1>
   <form action="/movies/create" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <label for="reviewTitle">Title of the movie</label>
-      <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title for your review">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="Enter a title for your review"
+      />
     </div>
-    <br>
+    <br />
     <div class="form-group">
       <label for="reviewTitle">Movie Image URL</label>
-      <input type="file" id="imgUrl" class="form-control" name="movieImg">
+      <input type="file" id="imgUrl" class="form-control" name="movieImg" />
     </div>
-    <br>
-     <div class="form-group">
-      <label for="reviewTitle">Genre</label>
-      <input type="text" class="form-control" id="genre" name="genre" placeholder="Enter a year for your review">
+    <br />
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="genre"
+      >
+        <option selected>Open this select menu</option>
+        <option value="drama">drama</option>
+        <option value="comedy">comedy</option>
+        <option value="action">action</option>
+        <option value="animation">animation</option>
+        <option value="adventure">adventure</option>
+        <option value="fantasy">fantasy</option>
+        <option value="musical">musical</option>
+        <option value="mystery">mystery</option>
+        <option value="romance">romance</option>
+        <option value="science fiction">science fiction</option>
+        <option value="sports">sports</option>
+        <option value="thriller">thriller</option>
+      </select>
     </div>
-    <br>
+    <br />
     <div class="form-group">
       <label for="reviewTitle">Year</label>
-      <input type="number" class="form-control" id="year" name="year" placeholder="Enter a year for your review">
+      <input
+        type="number"
+        class="form-control"
+        id="year"
+        name="year"
+        placeholder="Enter a year for your review"
+      />
     </div>
-    <br>
+    <br />
     <div class="form-group">
       <label for="reviewContent">Your Review:</label>
-      <textarea class="form-control" id="reviewLink" name="content" rows="8" placeholder="Write your review here"></textarea>
+      <textarea
+        class="form-control"
+        id="reviewLink"
+        name="content"
+        rows="8"
+        placeholder="Write your review here"
+      ></textarea>
     </div>
-    <br>
+    <br />
     <div class="form-group">
       <label for="score">Score:</label>
-        <input type="number" id="score" name="score" required>
+      <input type="number" id="score" name="score" required />
     </div>
-    <br>
+    <br />
     <button type="submit" class="btn btn-primary">Create</button>
   </form>
 </div>
-
-
-
-

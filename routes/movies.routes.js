@@ -52,6 +52,7 @@ router.get("/movies/:userId", (req, res, next) => {
   const { userId } = req.params;
 
   Movie.find({ uploadedBy: userId })
+    .populate("reviews")
     .then((movies) => {
       res.render("user-movies", { movies, userInSession: req.session.currentUser });
     })
