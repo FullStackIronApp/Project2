@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require("../models/User.model");
 const mongoose = require('mongoose');
 const { profile } = require("console");
+const fileUploader = require("../config/cloudinary.config.js");
+
 
 router.get("/profile", (req, res)=>{
     res.render("profile", {userInSession: req.session.currentUser});
@@ -19,26 +21,28 @@ router.get("/profile/:id/edit", async (req,res)=>{
 
       const profile = await User.findById(id);
 
-      res.render('profile/edit-profile', { profile: profile, userInSession: req.session.currentUser}); 
+      res.render('profile', { profile: profile, userInSession: req.session.currentUser}); 
   } catch (error) {
       console.error(error);
   }
 });
 
 
-router.post("/profile/:id/edit", async (req,res)=>{
-  try {
+router.post("/profile/:id/edit", fileUploader.single("profileUrl"),  (req,res,next)=>{
     const { id } = req.params;
-    const { username, email, profileUrl } = req.body;
-
-    const updatedProfile = await User.findByIdAndUpdate(id, { username: username, email:email, profileUrl: profileUrl }, { new: true });
-    req.session.currentUser = updatedProfile;
-    console.log(updatedProfile);
-    res.redirect(`/profile`);
-} catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-}
+    const { username, email} = req.body;
+    console.log(req.file.path)
+    .then(()=>{
+      return User.findByIdAndUpdate(id, { username: username, email:email, profileUrl: req.file.path }, { new: true })
+    })
+    .then((updatedUser)=>{
+      req.session.currentUser = updatedUser;
+      console.log(updatedUser);
+      res.redirect(`/profile`);
+    })
+    .catch((err)=>{
+      next(err)
+    })
 });
 
 

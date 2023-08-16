@@ -4,6 +4,7 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
 const mongoose = require('mongoose');
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 const fileUploader = require("../config/cloudinary.config.js");
 
 
