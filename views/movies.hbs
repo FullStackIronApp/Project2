@@ -1,7 +1,7 @@
 <div class="container text-center">
-  <h1 class="my-4">ALL MOVIES</h1>
-  <a href="/movies/create" class="btn btn-primary inline">Create movie</a>
-  <a href="/movies/{{userInSession._id}}" class="btn btn-secondary">Your movies</a>
+  <h1 class="my-4" style="font-family: 'Bungee Inline', cursive;">ALL MOVIES</h1>
+  <a href="/movies/create" class="btn btn-warning inline">Create movie</a>
+  <a href="/movies/{{userInSession._id}}" class="btn btn-warning">Your movies</a>
 
   <div class="d-flex flex-row flex-wrap justify-content-center mt-4">
     {{#each movies}}
@@ -17,7 +17,7 @@
           <h5 class="card-title">{{this.title}}</h5>
           <p class="card-text" style="width: auto;">Score:
             <strong>{{this.averageScore}}</strong></p>
-          <a href="/movie/{{this._id}}" class="btn btn-primary">Make review</a>
+          <a href="/movie/{{this._id}}" class="btn btn-warning">Make review</a>
         </div>
       </div>
     {{/each}}
