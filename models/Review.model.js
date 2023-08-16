@@ -18,7 +18,18 @@ const reviewSchema = new Schema(
     // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
-);
+
+  );
+  reviewSchema.virtual("date").get(function () {
+
+    // Parse the input date string
+    const dateObj = new Date(this.createdAt);
+
+    // Format the date as "dd-mm-yyyy"
+    const date = new Intl.DateTimeFormat('es', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(dateObj);
+    
+    return date
+  });
 
 const Review = model("Review", reviewSchema);
 
