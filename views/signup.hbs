@@ -1,8 +1,5 @@
 
 <div class="text-center mt-4">
-<<<<<<< HEAD
-  <h1 style="font-family: 'Bungee Inline', cursive;">Signup</h1>
-=======
   <h1>Signup</h1>
   <div class="col-md-6 mx-auto">
     <div class="card p-4">
@@ -10,7 +7,6 @@
         <form class="form-inline mt-3 w-100" action="/signup" method="POST" enctype="multipart/form-data">
           <label class="sr-only" for="inlineFormInputName2"></label>
           <input type="text" name="username" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Username">
->>>>>>> f7cf2c2c8c1fd2beb44b06b25cfbc630bfc03439
 
           <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
           <div class="input-group mb-2 mr-sm-2">
@@ -32,31 +28,14 @@
           <button type="submit" class="btn btn-warning mb-2">Create Account</button>
 
           {{#if errorMessage}}
-          <p class="error">{{errorMessage}}</p>
+            <div class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
+              {{errorMessage}}
+            </div>
           {{/if}}
         </form>
       </div>
     </div>
-
-    <div class="form-group mb-2">
-      <label for="inputPassword6">Password</label>
-      <input type="password" name="password" id="inputPassword6" class="form-control mx-sm-0" aria-describedby="passwordHelpInline" placeholder="********">
-    </div>
-
-
-    <div class="mb-3">
-  <label for="formFile" class="form-label">Profile Picture</label>
-  <input class="form-control" type="file" id="formFile" name="profileImg">
-</div>
-    <button type="submit" class="btn btn-warning mb-2">Create Account</button>
-
-    {{#if errorMessage}}
-        <div class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
-          {{errorMessage}}
-        </div>
-    {{/if}}
-  </form>
-</div>
+  </div>
 </div>
 
 
