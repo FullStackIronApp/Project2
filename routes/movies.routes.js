@@ -62,12 +62,15 @@ router.get("/movies/:userId", isLoggedIn, (req, res, next) => {
 router.get("/movie/:movieId", isLoggedIn, (req, res, next) => {
   const { movieId } = req.params;
 
+  
   Movie.findById(movieId)
-    .populate("uploadedBy")
-    .populate("reviews")
-    .then((movie) => {
-      console.log(movie);
-      res.render("movie-details.hbs", { movie, userInSession: req.session.currentUser });
+  .populate("uploadedBy")
+  .populate("reviews")
+  .then((movie) => {
+    console.log(movie);
+    const isTheOwner = (req.session.currentUser.username == movie.uploadedBy.username)
+    console.log("isTheOwner: ", isTheOwner);
+    res.render("movie-details.hbs", { movie, userInSession: req.session.currentUser, isTheOwner });
     })
     .catch((err) => next(err));
 });
@@ -91,5 +94,20 @@ router.post("/movie/:movieId", (req,res,next)=>{
   })
   .catch((err) => next(err));
 })
+
+router.post("/movie/:movieId/delete", (req,res,next)=>{
+  const {movieId} = req.params
+
+  Movie.findByIdAndRemove(movieId)
+  .then((data) => {
+    console.log("deleted movie:", data);
+    res.redirect("/movies");
+  })
+  .catch((err) => next(err));
+});
+
+
+
+
 
 module.exports = router;
