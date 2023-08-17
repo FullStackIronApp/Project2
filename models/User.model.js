@@ -15,7 +15,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true
+      trim: true,
+      match: [/(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Please use a valid username"]
     },
     password: {
       type: String,
