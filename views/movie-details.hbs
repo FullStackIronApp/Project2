@@ -1,5 +1,8 @@
 <div class="d-flex flex-wrap justify-content-center">
-  <div class="d-flex flex-column mx-2 my-3" style="min-width: 200px; width: 450px">
+  <div
+    class="d-flex flex-column mx-2 my-3"
+    style="min-width: 200px; width: 450px"
+  >
     <div class="card d-flex justify-content-center text-center shadow">
       <div>
         <img
@@ -9,11 +12,15 @@
         />
       </div>
       <div class="mt-2 px-1">
-        <h1 class="m-4" style="font-family: 'Bebas Neue', sans-serif;">{{movie.title}}</h1>
+        <h1
+          class="m-4"
+          style="font-family: 'Bebas Neue', sans-serif;"
+        >{{movie.title}}</h1>
         <p><strong class="mx-1">Year:</strong> {{movie.year}}</p>
         <p><strong class="mx-1">Genre:</strong> {{movie.genre}}</p>
         <p><strong class="mx-1">Score:</strong> {{movie.averageScore}}</p>
-        <p><strong class="mx-1">Uploaded by:</strong> {{movie.uploadedBy.username}}</p>
+        <p><strong class="mx-1">Uploaded by:</strong>
+          {{movie.uploadedBy.username}}</p>
         {{#if isTheOwner}}
           <form action="/movie/{{movie._id}}/delete" method="POST">
             <button class="btn btn-danger mb-2" type="submit">Delete movie</button>
@@ -22,32 +29,71 @@
       </div>
     </div>
   </div>
-  <div class="d-flex flex-column mx-2 my-3" style="min-width: 200px; width: 450px">
+  <div
+    class="d-flex flex-column mx-2 my-3"
+    style="min-width: 200px; width: 450px"
+  >
     <div class="card shadow">
       <div class="d-flex flex-column">
-        <div class="d-flex flex-column justify-content-center align-items-center">    
-          <h1 style="font-family: 'Bungee Inline', cursive;" class="text-center mb-3 mt-4">Reviews</h1>
+        <div
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1
+            style="font-family: 'Bungee Inline', cursive;"
+            class="text-center mb-3 mt-4"
+          >Reviews</h1>
           <h5 class="text-center mb-3">Provide a review</h5>
-          <form class="d-flex flex-column align-items-center w-75" action="/movie/{{movie._id}}/" method="POST">
-              <label for="content">Review</label>
-                <textarea type="text" class="form-control mb-2" name="content"></textarea>        
-              <label for="score">Score</label>
-                <input class="form-control mb-3" type="number" name="score" />
-              <button type="submit" class="btn btn-warning mb-2">Send</button>
-          </form>
-        </div>  
-        <div class="d-flex flex-column-reverse">
-            {{#each movie.reviews}}
-              <div class="card m-2">
-                <div class="card-body">
-                  <h5 class="card-title">Rating: {{this.score}}</h5>
-                  <h6 class="card-subtitle mb-2 text-body-secondary">By:
-                    {{this.createdBy}}</h6>
-                  <p class="card-text">{{this.content}}</p>
-                  <p>{{this.date}}</p>
-                </div>
+          <form
+            class="d-flex flex-column align-items-center w-75"
+            action="/movie/{{movie._id}}/"
+            method="POST"
+          >
+            <label for="content">Review</label>
+            <textarea
+              type="text"
+              class="form-control mb-2"
+              name="content"
+            ></textarea>
+            <label for="score">Score</label>
+            <select
+              class="form-select mb-2"
+              aria-label="Default select example"
+              name="score"
+            >
+              <option selected>Select score</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <button type="submit" class="btn btn-warning mb-2">Send</button>
+            {{#if errorMessage}}
+              <div
+                class="p-3 text-dnoanger-emphasis bg-danger-subtle border border-danger-subtle rounded-3"
+              >
+                {{errorMessage}}
               </div>
-            {{/each}}
+            {{/if}}
+          </form>
+        </div>
+        <div class="d-flex flex-column-reverse">
+          {{#each movie.reviews}}
+            <div class="card m-2">
+              <div class="card-body">
+                <h5 class="card-title">Rating: {{this.score}}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">By:
+                  {{this.createdBy}}</h6>
+                <p class="card-text">{{this.content}}</p>
+                <p>{{this.date}}</p>
+              </div>
+            </div>
+          {{/each}}
         </div>
       </div>
     </div>

@@ -62,7 +62,6 @@ router.get("/movies/:userId", isLoggedIn, (req, res, next) => {
 router.get("/movie/:movieId", isLoggedIn, (req, res, next) => {
   const { movieId } = req.params;
 
-  
   Movie.findById(movieId)
   .populate("uploadedBy")
   .populate("reviews")
@@ -76,8 +75,24 @@ router.get("/movie/:movieId", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/movie/:movieId", (req,res,next)=>{
-  const movieId = req.params
+  const {movieId} = req.params
   const {content, score} = req.body
+
+  if (!content || !score){
+
+  Movie.findById(movieId)
+  .populate("uploadedBy")
+  .populate("reviews")
+  .then((movie) => {
+    console.log(movie);
+    const isTheOwner = (req.session.currentUser.username == movie.uploadedBy.username)
+    console.log("isTheOwner: ", isTheOwner);
+    res.render("movie-details.hbs", { movie, userInSession: req.session.currentUser, isTheOwner, errorMessage: 'All fields are mandatory. Please provide your review, and score.' });
+    })
+  .catch((err) => next(err));
+    
+    return;
+  }
 
   Review.create({
     content,

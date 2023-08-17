@@ -59,7 +59,9 @@ movieSchema.virtual("averageScore").get(function () {
     return sum + review.score;
   }, 0);
 
-  return totalScore / this.reviews.length;
+  const score = totalScore / this.reviews.length;
+  const scoreDecimal = Math.round(score*10)/10
+  return scoreDecimal
 });
 
 const Movie = model("Movie", movieSchema);
