@@ -9,11 +9,11 @@
         />
       </div>
       <div class="mt-2 px-1">
-        <h1>{{movie.title}}</h1>
-        <p>Year: {{movie.year}}</p>
-        <p>Genre: {{movie.genre}}</p>
-        <p>Score: {{movie.averageScore}}</p>
-        <p>Uploaded by: {{movie.uploadedBy.username}}</p>
+        <h1 class="m-4">{{movie.title}}</h1>
+        <p><strong class="mx-1">Year:</strong> {{movie.year}}</p>
+        <p><strong class="mx-1">Genre:</strong> {{movie.genre}}</p>
+        <p><strong class="mx-1">Score:</strong> {{movie.averageScore}}</p>
+        <p><strong class="mx-1">Uploaded by:</strong> {{movie.uploadedBy.username}}</p>
         {{#if isTheOwner}}
           <form action="/movie/{{movie._id}}/delete" method="POST">
             <button class="btn btn-danger mb-2" type="submit">Delete movie</button>
