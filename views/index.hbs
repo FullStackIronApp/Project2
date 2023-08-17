@@ -1,7 +1,7 @@
 <div class="d-flex flex-column justify-content-center align-items-center text-center">
     <h1 class="mt-4" style="font-family: 'Bungee Inline', cursive;">Welcome to PopcornMDB</h1>
     <div>
-        <img src="images/ylogo.png" class="d-inline" height="50px"><h5 class="d-inline">Make Popcorn and Press Play</h5><img src="images/ylogo.png" class="d-inline" height="50px">
+        <img src="images/ylogo.png" class="d-inline" height="50px"><h5 style="font-family: 'Bebas Neue', sans-serif;" class="d-inline">Make Popcorn and Press Play</h5><img src="images/ylogo.png" class="d-inline" height="50px">
     </div>
 
 <div id="movieCarousel" class="carousel slide mt-4" data-bs-ride="carousel" >
@@ -12,8 +12,8 @@
             <img src="https://image.tmdb.org/t/p/original/{{this.poster_path}}" alt="{{this.title}}" class="img-fluid rounded">
         </div>
             <div class="carousel-caption" style="background-color:rgb(0,0,0);opacity:0.8;">  
-                <h3>{{this.title}}</h3>
-                <p>Score: {{this.vote_average}}</p>
+                <h3 style="font-family: 'Bungee Inline', cursive;">{{this.title}}</h3>
+                <p><strong>SCORE:</strong> {{this.vote_average}}</p>
             </div>
         </div>
         {{/each}}
