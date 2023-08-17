@@ -30,14 +30,14 @@ router.post("/signup", fileUploader.single("profileImg"), (req, res, next)=>{
             email,
             username,
             password: hashedPassword,
-            profileUrl: req.file.path
+            profileUrl: req.file?.path
         })
     })
     .then(error=> {
         if (error instanceof mongoose.Error.ValidationError) {
             res.render('signup', { errorMessage: error.message });
           } else {
-            res.redirect("/")
+            res.redirect("/login")
             next(error);
           }
 
