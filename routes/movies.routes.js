@@ -87,7 +87,7 @@ router.post("/movie/:movieId", (req,res,next)=>{
     console.log(movie);
     const isTheOwner = (req.session.currentUser.username == movie.uploadedBy.username)
     console.log("isTheOwner: ", isTheOwner);
-    res.render("movie-details.hbs", { movie, userInSession: req.session.currentUser, isTheOwner, errorMessage: 'All fields are mandatory. Please provide your review, and score.' });
+    res.render("movie-details", { movie, userInSession: req.session.currentUser, isTheOwner, errorMessage: 'All fields are mandatory. Please provide your review, and score.' });
     })
   .catch((err) => next(err));
     
@@ -101,7 +101,7 @@ router.post("/movie/:movieId", (req,res,next)=>{
   })
   .then((result) => {
     console.log("Review created", result);
-    return Movie.findByIdAndUpdate(movieId.movieId, { $push: { reviews: result._id}}, { new: true })
+    return Movie.findByIdAndUpdate(movieId, { $push: { reviews: result._id}}, { new: true })
   })
   .then((newMovie) => {
     console.log("new update", newMovie);
