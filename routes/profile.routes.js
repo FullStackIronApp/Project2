@@ -15,19 +15,6 @@ router.post("/profile", (req, res) => {
   const { email, username, password, profileUrl } = req.body;
 });
 
-router.get("/profile/:id/edit",isLoggedIn, async (req, res) => {
-
-  try {
-    const { id } = req.params;
-
-    const profile = await User.findById(id);
-
-    res.render('profile', { profile: profile, userInSession: req.session.currentUser });
-  } catch (error) {
-    console.error(error);
-  }
-});
-
 
 router.post("/profile/:id/edit", fileUploader.single("profileUrl"), (req, res, next) => {
   const { id } = req.params;
