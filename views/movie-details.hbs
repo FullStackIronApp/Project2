@@ -26,14 +26,14 @@
     <div class="card shadow">
       <div class="d-flex flex-column">
         <div class="d-flex flex-column justify-content-center align-items-center">    
-          <h1 class="text-center mb-3 mt-4">Reviews</h1>
+          <h1 style="font-family: 'Bungee Inline', cursive;" class="text-center mb-3 mt-4">Reviews</h1>
           <h5 class="text-center mb-3">Provide a review</h5>
           <form class="d-flex flex-column align-items-center w-75" action="/movie/{{movie._id}}/" method="POST">
               <label for="content">Review</label>
                 <textarea type="text" class="form-control mb-2" name="content"></textarea>        
               <label for="score">Score</label>
-                <input class="form-control mb-2" type="number" name="score" />
-              <button type="submit" class="btn btn-primary mb-2">Send review</button>
+                <input class="form-control mb-3" type="number" name="score" />
+              <button type="submit" class="btn btn-warning mb-2">Send</button>
           </form>
         </div>  
         <div class="d-flex flex-column-reverse">
